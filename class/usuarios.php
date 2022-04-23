@@ -20,9 +20,7 @@ class crud
                 <td>
                     <a class="btn btn-large btn-success" href="edit_users.php?edit_id=<?php echo $row['id'] ?>"> Editar</a>
                 </td>
-                <td>
-                    <a class="btn btn-large btn-danger" href="eliminar_users.php?delete_id=<?php echo $row['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</a>
-                </td>
+ 
             </tr>
 
 <?php

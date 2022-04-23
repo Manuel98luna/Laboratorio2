@@ -8,8 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <?php require_once "navbar.php" ?>
-    <title>LOGIiN</title>
+    <?php require_once "menu.php" ?>
+    <title>Registro</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     $modelo = $_POST['Modelo'];
                     $color = $_POST['Color'];
                     $precio = $_POST['Precio'];
-                    $query = $conn->prepare("SELECT * FROM automovil WHERE matricula=:matricula");
+                    $query = $conn->prepare("SELECT * FROM automovil WHERE Matricula=:Matricula");
                     $query->bindParam("Matricula", $matricula, PDO::PARAM_STR);
                     $query->execute();
 

@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="col-6 p-5 bg-white shadow-lg rounded">
                 <h3>Nuevo Auto</h3>
                 <hr>
-                <form method="post" action="">
+                <form method="post" action="registroa.php">
                     <div class="form-group">
                         <label for="Matricula">Matricula:</label>
                         <input id="Matricula" class="form-control" type="text" name="Matricula">
@@ -41,14 +41,14 @@ if (!isset($_SESSION['user_id'])) {
                         <input id="Modelo" class="form-control" type="text" name="Modelo">
                     </div>
                     <div class="form-group">
-                        <label for="color">color:</label>
-                        <input id="color" class="form-control" type="text" name="color">
+                        <label for="Color">Color:</label>
+                        <input id="Color" class="form-control" type="text" name="Color">
                     </div>
                     <div class="form-group">
-                        <label for="precio">precio:</label>
-                        <input id="precio" class="form-control" type="text" name="precio">
+                        <label for="Precio">Precio:</label>
+                        <input id="Precio" class="form-control" type="text" name="Precio">
                     </div> <br>
-                    <button class="btn btn-primary" name="registro" type="submit">Guardar</button>
+                    <button class="btn btn-primary" name="registroa" type="submit" >Guardar</button>
                 </form>
             </div>
 

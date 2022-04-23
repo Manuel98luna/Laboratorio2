@@ -21,10 +21,7 @@ class crud
                 <td><?php echo $row['color']; ?></td>
                 <td><?php echo $row['precio']; ?></td>
                 <td>
-                    <a href="edit_auto.php?edit_id=<?php echo $row['autoID'] ?>"> Editar</a>
-                </td>
-                <td>
-                    <a href="eliminar_auto.php?delete_id=<?php echo $row['id'] ?>"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</a>
+                    <a class="btn btn-large btn-success" href="edit_auto.php?edit_id=<?php echo $row['autoID'] ?>"> Editar</a>
                 </td>
             </tr>
 
@@ -36,7 +33,7 @@ class crud
     public function update($id, $matricula, $marca, $modelo,$color, $precio)
     {
         try {
-            $stmt = $this->db->prepare("UPDATE automovil SET matricula=:matricula
+            $stmt = $this->db->prepare("UPDATE automovil SET matricula=:matricula, marca=:marca, modelo=:modelo, color=:color, precio=:precio
             WHERE autoID=:autoID");
             $stmt->bindparam(":matricula", $matricula);
             $stmt->bindparam(":marca", $marca);
@@ -60,8 +57,8 @@ class crud
     }
     public function delete($id)
     {
-        $stmt = $this->db->prepare("DELETE FROM automovil WHERE autoID=:autoID");
-        $stmt->bindparam(":autoID", $id);
+        $stmt = $this->db->prepare("DELETE FROM automovil WHERE autoID=:id");
+        $stmt->bindparam(":id", $id);
         $stmt->execute();
         return true;
     }

@@ -1,12 +1,12 @@
 <?php
 include_once 'config.php';
-include_once 'class/usuarios.php';
+include_once 'class/autos.php';
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
     $crud = new crud($conn);
     // header("Location:eliminar_users.php");
 }
-echo $id;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -18,7 +18,7 @@ echo $id;
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <?php require_once "menu.php" ?>
-    <title>DELETE</title>
+    <title>Eliminar</title>
 </head>
 
 <body>
@@ -29,18 +29,25 @@ echo $id;
             <table class='table table-bordered'>
                 <tr>
                     <th>ID</th>
-                    <th>USUARIO</th>
-                    <th>EMAIL</th>
+                    <th>Matricula</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Precio</th>
+
                 </tr>
                 <?php
-                $stmt = $conn->prepare("SELECT * FROM usuarios WHERE id=:id");
-                $stmt->execute(array(":id" => $_GET['delete_id']));
+                $stmt = $conn->prepare("SELECT * FROM automovil WHERE autoID=:autoID");
+                $stmt->execute(array(":autoID" => $_GET['delete_id']));
                 while ($row = $stmt->fetch(PDO::FETCH_BOTH)) {
                 ?>
                     <tr>
-                        <td><?php echo ($row['id']); ?></td>
-                        <td><?php echo ($row['username']); ?></td>
-                        <td><?php echo ($row['email']); ?></td>
+                        <td><?php echo ($row['autoID']); ?></td>
+                        <td><?php echo ($row['matricula']); ?></td>
+                        <td><?php echo ($row['marca']); ?></td>
+                        <td><?php echo ($row['modelo']); ?></td>
+                        <td><?php echo ($row['color']); ?></td>
+                        <td><?php echo ($row['precio']); ?></td>
                     </tr>
                 <?php
                 }
@@ -52,18 +59,18 @@ echo $id;
     </div>
     <div class="container">
         <p>
-            <?php
+            <?php   
             if (isset($_GET['delete_id'])) {
             ?>
         <form method="post">
-            <input type="hidden" name="id" value="<?php echo $row['id']; ?>" />
-            <button class="btn btn-large btn-primary" type="submit" name="btn-del"><i class="glyphicon glyphicon-trash"></i> &nbsp; YES</button>
-            <a href="admin_users.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i> &nbsp; NO</a>
+           <!--  <input type="hidden" name="autoID" value="<?php echo $row['autoID']; ?>" /> -->
+            <button class="btn btn-large btn-primary" type="submit" name="btn-delete"><i class="glyphicon glyphicon-trash"></i> &nbsp; YES</button>
+            <a href="admin_autos.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i> &nbsp; NO</a>
         </form>
     <?php
             } else {
     ?>
-        <a href="admin_users.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i>REGRESAR</a>
+        <a href="admin_autos.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i>REGRESAR</a>
     <?php
             }
     ?>
